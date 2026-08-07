@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Tarayıcı, native scrollbar/form kontrollerini (ör. thin-scrollbar uygulanmamış herhangi bir
+   overflow alanı) karanlık temaya göre çizsin diye — aksi halde koyu arka planlı panellerde bile
+   varsayılan beyaz/açık gri scrollbar görünüp göze batıyordu (bkz. Görev Detayı > İlerlemeler). */
+:root {
+  color-scheme: light dark;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  /* Corporate / Soft Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  
+  /* Premium Card Radius */
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+/* Kanban ve Timeline'daki yatay kaydırma alanları için ince, temaya uyumlu scrollbar.
+   Varsayılan tarayıcı scrollbar'ı (kalın, gri) her ikisinde de aynı şekilde kötü görünüyordu. */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(203 213 225) transparent; /* slate-300 */
+}
+.thin-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgb(203 213 225); /* slate-300 */
+  border-radius: 9999px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(148 163 184); /* slate-400 */
+}
+@media (prefers-color-scheme: dark) {
+  .thin-scrollbar {
+    scrollbar-color: rgb(71 85 105) transparent; /* slate-600 */
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(71 85 105);
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(100 116 139); /* slate-500 */
+  }
+}
